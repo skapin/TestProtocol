@@ -53,7 +53,7 @@ string Uart::readData()
     if ( _device < 0 )
         return "Err.";
     char buf [100] = {0};
-    int cmpt_read = read (_device, buf, sizeof buf);
+    int cmpt_read = read (_device, buf, 11);
     if ( cmpt_read > 0)
         return buf;
     else

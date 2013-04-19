@@ -30,6 +30,11 @@
     </item>
     <item>
      <property name="text">
+      <string>226</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
       <string>72</string>
      </property>
     </item>
@@ -356,6 +361,36 @@
     <property name="text">
      <string>send num</string>
     </property>
+   </widget>
+   <widget class="QComboBox" name="selectOutputFormat">
+    <property name="geometry">
+     <rect>
+      <x>330</x>
+      <y>120</y>
+      <width>78</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <item>
+     <property name="text">
+      <string>Hexa</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Char</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Deci</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Bin</string>
+     </property>
+    </item>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">

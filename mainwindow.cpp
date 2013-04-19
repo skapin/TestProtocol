@@ -31,10 +31,9 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_send_clicked()
 {
-    _uart->send( ui->addr->currentText().at(0).toAscii());
-    _uart->send( ui->action->currentText().at(0).toAscii());
 
-
+    _uart->send( ui->addr->currentText().toInt() );
+    _uart->send( ui->action->currentText().toInt() );
 
     _uart->send(ui->c0->value());
     _uart->send(ui->c1->value());
@@ -44,7 +43,7 @@ void MainWindow::on_send_clicked()
     _uart->send(ui->c5->value());
     _uart->send(ui->c6->value());
 
-
+    _uart->send(ui->c6->value()); // chk
 
 }
 
@@ -52,7 +51,31 @@ void MainWindow::refresh_console()
 {
     QString value = _uart->readData().c_str();
     if( value.compare("")!=0 )
-        ui->console->setText( value  );
+    {
+        QByteArray txt;
+        switch ( ui->selectOutputFormat->currentIndex() )
+        {
+        case 0 :
+            txt = value.toAscii().toHex();
+            break;
+        case 1 :
+            txt = value.toAscii();
+            break;
+        case 2 :
+            txt = value.toAscii().toHex();
+            break;
+        case 3 :
+            txt = value.toAscii();
+            break;
+        default :
+            txt = value.toAscii();
+            break;
+        }
+
+        ui->console->setText( txt );
+
+
+    }
 }
 
 void MainWindow::on_clear_clicked()
